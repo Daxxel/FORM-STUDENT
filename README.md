@@ -30,11 +30,31 @@ El patrón **MVC** (Modelo - Vista - Controlador) es una forma de organizar el c
 
 ## 🗂️ Estructura típica del proyecto
 
-src/ <br>
-├── models/ # Modelos de datos  <br>
-│ └── Usuario.java <br>
-├── views/ # Interfaz gráfica <br>
-│ └── UsuarioForm.java <br>
-├── controllers/ # Lógica de control <br>
-│ └── UsuarioController.java  <br>
+src/ \
+├── models/ # Modelos de datos \
+│ └── Usuario.java \
+├── views/ # Interfaz gráfica \
+│ └── UsuarioForm.java \
+├── controllers/ # Lógica de control \
+│ └── UsuarioController.java  \
 ├── Main.java # Punto de entrada del programa
+
+## 🗂️ Estructura típica del proyecto con conexión a una base de datos
+
+src/ \
+├── controller/             # Controladores que manejan la lógica de flujo \
+│   └── UsuarioController.java \
+│
+├── model/                  # Clases que representan datos (Modelos) \
+│   └── Usuario.java \
+│
+├── view/                   # Interfaces gráficas (Vistas) \
+│   └── UsuarioForm.java \
+│
+├── dao/                    # Clases de acceso a datos (Data Access Object) \
+│   └── UsuarioDAO.java \
+│
+├── database/               # Clase de conexión centralizada a la base de datos \
+│   └── ConexionBD.java \
+│
+├── Main.java               # Punto de entrada del programa
