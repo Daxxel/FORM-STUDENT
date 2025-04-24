@@ -260,11 +260,11 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_SemestreComboBoxActionPerformed
     
     public  Boolean Validar(String valor, String mensage){
-    
-        if (valor.isBlank()) {
+        return false;
+        // if (valor.isBlank()) {
             
-        } else {
-        }
+        // } else {
+        // }
         
     }
     
