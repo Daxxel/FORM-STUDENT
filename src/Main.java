@@ -1,4 +1,4 @@
-package app;
+
 
 import java.text.Normalizer.Form;
 
@@ -27,7 +27,7 @@ public class Main {
         }
 
         SwingUtilities.invokeLater(() -> {
-            new RegisterView().setVisible(true);
+            new RegisterView();
         });
     }
 }
