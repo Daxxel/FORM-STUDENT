@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import database.DbConnection;
 import models.Student;
+import util.DbConnection;
 
 public class StudentsService {
     private Connection connection = DbConnection.connection;
