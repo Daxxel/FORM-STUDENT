@@ -9,10 +9,8 @@ import javax.swing.border.SoftBevelBorder;
 
 public class UiHelper {
     public static JLabel labelBuilder(String placeholder) {
-        JLabel labelPref = new JLabel();
-
+        JLabel labelPref = new JLabel(placeholder);
         labelPref.setFont(new Font("Yu Gothic UI Semibold", 1, 14));
-        labelPref.setText(placeholder);
 
         return labelPref;
     }
@@ -34,5 +32,11 @@ public class UiHelper {
         inputRef.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
 
         return inputRef;
+    }
+
+    public static JPanel containerBuilder() {
+        JPanel containerRef = new JPanel();
+
+        return containerRef;
     }
 }

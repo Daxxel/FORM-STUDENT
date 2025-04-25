@@ -8,6 +8,7 @@ package models;
 
 public class StudentFactory {
     private String splitter;
+    private int baseIdNumber = 5000000;
 
     public StudentFactory(String prefix) {
         splitter = prefix;

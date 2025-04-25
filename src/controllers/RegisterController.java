@@ -8,10 +8,8 @@ import services.StudentsService;
 import views.*;
 
 public class RegisterController {
-    private RegisterView view;
     private StudentFactory factory = new StudentFactory();
     private StudentsService dao = new StudentsService();
-
 
     public void toggleStudents() {
         StudentsView view = new StudentsView();
@@ -19,17 +17,12 @@ public class RegisterController {
     }
 
     public void registerStudent(String fullName, String career, String semester) {
-        Student student = factory.createStudent(fullName, career, semester);
-
         try {
+            Student student = factory.createStudent(fullName, career, semester);
             dao.registerStudent(student);
+
         } catch (SQLException exception) {
+            
         }
     }
-
-    /**
-     * TODO! 
-     * 
-     * 
-     */
 }

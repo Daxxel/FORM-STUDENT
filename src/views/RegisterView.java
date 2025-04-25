@@ -35,41 +35,37 @@ public class RegisterView extends JFrame {
         setLocationRelativeTo(null); // Centra la ventana
         setBackground(new Color(204, 204, 204));
 
-        UiHelper helper = new UiHelper();
+        JLabel nameLabel = UiHelper.labelBuilder("Nombre");
+        JLabel fatherLastNameLabel = UiHelper.labelBuilder("Apellido paterno");
+        JLabel motherLastNameLabel = UiHelper.labelBuilder("Apellido materno");
+        JLabel semesterLabel = UiHelper.labelBuilder("Semestre");
+        JLabel careerNameLabel = UiHelper.labelBuilder("Carrera");
+        JLabel titleLabel = UiHelper.labelBuilder("Registro de Estudiantes");
+        JLabel subtitleLabel = UiHelper.labelBuilder("Complete el formulario con los datos del estudiante");
 
-        JLabel nameLabel = helper.labelBuilder("Nombre");
-        JLabel fatherLastNameLabel = helper.labelBuilder("Apellido paterno");
-        JLabel motherLastNameLabel = helper.labelBuilder("Apellido materno");
-        JLabel semesterLabel = helper.labelBuilder("Semestre");
-        JLabel careerNameLabel = helper.labelBuilder("Carrera");
+        JButton addButton = UiHelper.buttonBuilder("Agregar");
+        JButton watchListButton = UiHelper.buttonBuilder("Ver Lista");
 
-        JButton addButton = helper.buttonBuilder("Agregar");
-        JButton watchListButton = helper.buttonBuilder("Ver Lista");
+        JTextField nameInput = UiHelper.inputBuilder();
+        JTextField fatherLastNameInput = UiHelper.inputBuilder();
+        JTextField motherLastNameInput = UiHelper.inputBuilder();
 
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                String name = nameLabel.getText();
-                String fatherLastName = fatherLastNameLabel.getText();
-                String motherLastName = motherLastNameLabel.getText();
-
-                String fullName = name + " " + fatherLastName + " " + motherLastName;
-                
-                String semester = semesterLabel.getText();
-                String career = careerNameLabel.getText();
-
-                controller.registerStudent(fullName, career, semester);
                 dispose();
             }
         });
 
         watchListButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                controller.toggleStudents();
-                dispose();
             }
         });
 
-        Panel mainPanel = new Panel();
-        mainPanel.setBackground(new Color(255, 255, 255));
+        // Organización en la vista
+        JPanel headerContainer = UiHelper.containerBuilder();
+
+
+
+        JPanel mainContainer = UiHelper.containerBuilder();
     }
 }
