@@ -13,6 +13,10 @@ public class StudentFactory {
         splitter = prefix;
     }
 
+    public StudentFactory() {
+        splitter = " ";
+    }
+
     public Student createStudent(
         String fullName,
         String career,

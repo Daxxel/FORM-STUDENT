@@ -1,4 +1,4 @@
-package dao;
+package services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.util.List;
 import database.DbConnection;
 import models.Student;
 
-public class StudentsDAO {
+public class StudentsService {
     private Connection connection = DbConnection.connection;
     
     public List<Student> getAllStudents() throws SQLException {
@@ -54,7 +54,7 @@ public class StudentsDAO {
         return null;
     }
 
-    public boolean registerUser(Student student) throws SQLException {
+    public boolean registerStudent(Student student) throws SQLException {
         String sql = "INSERT INTO students () VALUES ()";
 
         return true;
