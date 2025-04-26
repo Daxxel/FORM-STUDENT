@@ -53,7 +53,7 @@ public class TextInput {
         label.setFont(
             new Font("Yu Gothic UI Semibold", Font.BOLD, 14)
         );
-        
+
         input = new JTextField();
 
         input.setMaximumSize(
@@ -79,6 +79,7 @@ public class TextInput {
     public boolean isValid() {
         String inputValue = input.getText();
         boolean hasMinChars = inputValue.length() > minCharacters;
+        
         return inputValue.isBlank() || inputValue.isEmpty() || hasMinChars;
     }
 
