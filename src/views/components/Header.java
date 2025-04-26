@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +14,8 @@ public class Header {
     private static JPanel component;
     private static Color backgroundColor = Color.decode("#1d2b3a");
 
+    private Header() {}
+
     private static void buildComponent() {
         component = new JPanel();
         component.setBackground(backgroundColor);
@@ -22,8 +23,13 @@ public class Header {
         component.setLayout(
                 new BoxLayout(component, BoxLayout.Y_AXIS));
 
-        JLabel title = titleBuilder();
-        JLabel subtitle = subtitleBuilder();
+        JLabel title = labelBuilder(
+                "Registro de Estudiantes",
+                new Font("Microsoft JhengHei", Font.BOLD, 24));
+
+        JLabel subtitle = labelBuilder(
+                "Responde cuidadosamente el siguiente formulario",
+                new Font("Microsoft JhengHei", Font.PLAIN, 14));
 
         component.add(title);
         component.add(subtitle);
@@ -31,8 +37,9 @@ public class Header {
         component.setBorder(
                 BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        component.add(
-                Box.createRigidArea(new Dimension(0, 5)));
+        component.setMaximumSize(
+            new Dimension(Integer.MAX_VALUE, 100)
+        );
     }
 
     public static JPanel getComponent() {
@@ -43,25 +50,13 @@ public class Header {
         return component;
     }
 
-    private static JLabel titleBuilder() {
-        JLabel title = new JLabel("Registro de Estudiantes");
-        title.setForeground(Color.WHITE);
-        title.setFont(
-                new Font("Microsoft JhengHei", Font.BOLD, 24));
+    private static JLabel labelBuilder(String label, Font font) {
+        JLabel labelRef = new JLabel(label);
+        labelRef.setForeground(Color.WHITE);
+        labelRef.setFont(font);
 
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        labelRef.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        return title;
-    }
-
-    private static JLabel subtitleBuilder() {
-        JLabel subtitle = new JLabel("Responde cuidadosamente el siguiente formulario");
-        subtitle.setForeground(Color.WHITE);
-        subtitle.setFont(
-                new Font("Microsoft JhengHei", Font.PLAIN, 14));
-
-        subtitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        return subtitle;
+        return labelRef;
     }
 }

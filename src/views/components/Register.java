@@ -1,9 +1,13 @@
 package views.components;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,25 +32,25 @@ public class Register {
 
     private static void buildComponent() {
         component = new JPanel();
-        component.setBackground(Color.WHITE);
+        component.setOpaque(false);
 
-        component.setLayout(
-                new GridLayout(2, 2));
+        TextInput nameField = new TextInput("Nombre", "Chipa se la come");
+        TextInput fatherField = new TextInput("Apellido", "Chipa se la come");
 
-        TextInput nameInput = new TextInput(
-                "Nombre",
-                "El nombre debe tener al menos 2 caracteres");
+        JPanel firstPanel = new JPanel();
+        firstPanel.setOpaque(false);
 
-        TextInput fathersLastName = new TextInput(
-                "Apellido paterno",
-                "El nombre debe tener al menos 2 caracteres");
+        firstPanel.setLayout(
+            new BoxLayout(firstPanel, BoxLayout.X_AXIS)
+        );
 
-        TextInput mothersLastName = new TextInput(
-                "Apellido materno (opcional)");
+        firstPanel.add(nameField.getComponent());
+        firstPanel.add(Box.createHorizontalStrut(20));
+        firstPanel.add(fatherField.getComponent());
 
-        component.add(nameInput.getComponent());
-        component.add(fathersLastName.getComponent());
-        component.add(mothersLastName.getComponent());
+        firstPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
+
+        component.add(firstPanel);
     }
 
     public static JPanel getComponent() {
@@ -55,39 +59,5 @@ public class Register {
         }
 
         return component;
-    }
-
-    private static JPanel inputFactory(String name, String placeholder, String invalidMessage) {
-        JPanel container = new JPanel();
-
-        container.setLayout(
-                new BoxLayout(container, BoxLayout.Y_AXIS));
-
-        JLabel label = new JLabel(name);
-        JLabel errorLabel = new JLabel(invalidMessage);
-
-        JTextField input = new JTextField(placeholder);
-
-        container.add(label);
-        container.add(input);
-        container.add(errorLabel);
-
-        return container;
-    }
-
-    private static JPanel inputFactory(String name, String placeholder) {
-        JPanel container = new JPanel();
-
-        container.setLayout(
-                new BoxLayout(container, BoxLayout.Y_AXIS));
-
-        JLabel label = new JLabel(name);
-
-        JTextField input = new JTextField(placeholder);
-
-        container.add(label);
-        container.add(input);
-
-        return container;
     }
 }

@@ -26,8 +26,6 @@ public class Main {
             java.util.logging.Logger.getLogger(Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        SwingUtilities.invokeLater(() -> {
-            new RegisterView();
-        });
+        SwingUtilities.invokeLater(RegisterView::new);
     }
 }

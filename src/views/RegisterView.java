@@ -1,14 +1,8 @@
 package views;
 
 import javax.swing.*;
-
-import controllers.RegisterController;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import models.StudentFactory;
 import views.components.Header;
 import views.components.Register;
 
@@ -16,39 +10,43 @@ public class RegisterView extends JFrame {
 	public RegisterView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null); // Centra la ventana
-		setBackground(new Color(204, 204, 204));
 		setSize(1080, 720);
 
-		JPanel mainPane = new JPanel(
-				new BorderLayout());
+		JPanel mainPanel = new JPanel(new BorderLayout());
+		mainPanel.setBackground(new Color(240, 244, 248));
 
-		mainPane.setBorder(BorderFactory.createEmptyBorder(60, 60, 60, 60));
+		JPanel cardPanel = cardBuilder();
+		JPanel wrapper = loadWrapper(cardPanel);
 
-		mainPane.setBackground(
-				Color.decode("#f5f8fa"));
+		mainPanel.add(wrapper, BorderLayout.CENTER);
 
-		mainPane.add(Header.getComponent(), BorderLayout.NORTH);
-		mainPane.add(Register.getComponent(), BorderLayout.CENTER);
-
-		JPanel buttonsPane = new JPanel();
-
-		buttonsPane.setLayout(
-				new FlowLayout(FlowLayout.RIGHT));
-
-		buttonsPane.setBackground(Color.WHITE);
-		buttonsPane.setBorder(
-			BorderFactory.createEmptyBorder(20, 20, 20, 20)
-		);
-
-		JButton addStudentButton = new JButton("Agregar");
-		JButton watchStudentListButton = new JButton("Ver lista");
-
-		buttonsPane.add(addStudentButton);
-		buttonsPane.add(watchStudentListButton);
-
-		mainPane.add(buttonsPane, BorderLayout.SOUTH);
-
-		setContentPane(mainPane);
+		setContentPane(mainPanel);
 		setVisible(true);
+	}
+
+	private JPanel cardBuilder() {
+		JPanel cardPanel = new JPanel();
+		cardPanel.setBackground(Color.WHITE);
+		cardPanel.setLayout(new BoxLayout(cardPanel, BoxLayout.Y_AXIS));
+		cardPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+		cardPanel.setMaximumSize(new Dimension(900, 800));
+
+		cardPanel.add(Header.getComponent());
+		cardPanel.add(Register.getComponent());
+
+		return cardPanel;
+	}
+
+	private JPanel loadWrapper(JPanel children) {
+		JPanel centerWrapper = new JPanel();
+		centerWrapper.setLayout(new BoxLayout(centerWrapper, BoxLayout.Y_AXIS));
+        centerWrapper.setOpaque(false);
+
+		centerWrapper.add(Box.createVerticalGlue());
+        centerWrapper.add(children);
+        centerWrapper.add(Box.createVerticalGlue());
+
+		return centerWrapper;
 	}
 }
