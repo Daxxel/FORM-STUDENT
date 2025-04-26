@@ -12,8 +12,7 @@ public class RegisterController {
     private StudentsService dao = new StudentsService();
 
     public void toggleStudents() {
-        StudentsView view = new StudentsView();
-        view.setVisible(true);
+        new StudentsView();
     }
 
     public void registerStudent(String fullName, String career, String semester) {
