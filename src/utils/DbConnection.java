@@ -11,6 +11,8 @@ public class DbConnection {
 
     private static Connection connection;
 
+    private DbConnection() {}
+
     public static Connection getConnection() {
         if(connection == null) {
             connection = buildConnection();
