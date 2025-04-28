@@ -259,14 +259,14 @@ public class Form extends javax.swing.JFrame {
 
     }//GEN-LAST:event_SemestreComboBoxActionPerformed
     
-    public  Boolean Validar(String valor, String mensage){
+    // public  Boolean Validar(String valor, String mensage){
     
-        if (valor.isBlank()) {
+    //     if (valor.isBlank()) {
             
-        } else {
-        }
+    //     } else {
+    //     }
         
-    }
+    // }
     
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
