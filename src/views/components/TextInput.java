@@ -1,9 +1,11 @@
 package views.components;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +17,8 @@ public class TextInput {
     private JLabel errorLabel;
     private JLabel label;
     private int minCharacters = 2;
+    private String errorMessage;
+    private boolean required = false;
 
     public JPanel getComponent() {
         return container;
@@ -24,62 +28,53 @@ public class TextInput {
         return input;
     }
 
-    public TextInput(String name, String invalidMessage) {
-        buildCommon();
-
-        errorLabel = new JLabel(invalidMessage);
-        errorLabel.setVisible(false);
-
-        label = new JLabel(name);
-        label.setFont(
-            new Font("Yu Gothic UI Semibold", Font.BOLD, 14)
-        );
-
-        input = new JTextField();
-
-        input.setMaximumSize(
-            new Dimension(Integer.MAX_VALUE, 50)
-        );
-
-        container.add(label);
-        container.add(input);
-        container.add(errorLabel);
+    public String getErrorMessage() {
+        return errorMessage;
     }
 
-    public TextInput(String name) {
-        buildCommon();
+    public void setErrorMessage(String message) {
+        errorMessage = message;
+    }
 
+    public TextInput(String name, boolean required) {
         label = new JLabel(name);
         label.setFont(
-            new Font("Yu Gothic UI Semibold", Font.BOLD, 14)
+            new Font("Comic sans", Font.BOLD, 12)
         );
-
+        this.required = required;
+        
         input = new JTextField();
+        input.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        input.setMaximumSize(
-            new Dimension(Integer.MAX_VALUE, 50)
-        );
+        container = new JPanel();
+        container.setOpaque(false);
+
+        BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
+        container.setLayout(layout);
 
         container.add(label);
         container.add(input);
+
+        if (this.required) {
+            errorMessage = "Invalid";
+            errorLabel = new JLabel(errorMessage);
+            container.add(errorLabel);
+        }
     }
 
     public void buildCommon() {
         container = new JPanel();
         container.setOpaque(false);
-
-        container.setMaximumSize(
-            new Dimension(Integer.MAX_VALUE, 50)
-        );
+        container.setAlignmentX(JPanel.LEFT_ALIGNMENT);
 
         container.setLayout(
-            new BoxLayout(container, BoxLayout.Y_AXIS));
+                new BoxLayout(container, BoxLayout.Y_AXIS));
     }
 
     public boolean isValid() {
         String inputValue = input.getText();
         boolean hasMinChars = inputValue.length() > minCharacters;
-        
+
         return inputValue.isBlank() || inputValue.isEmpty() || hasMinChars;
     }
 
@@ -91,7 +86,7 @@ public class TextInput {
     public void toggleInvalidMessage() {
         boolean isVisible = errorLabel.isVisible();
         errorLabel.setVisible(!isVisible);
-        
+
         errorLabel.repaint();
     }
 

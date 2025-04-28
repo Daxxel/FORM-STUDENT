@@ -25,15 +25,23 @@ public class RegisterView extends JFrame {
 	}
 
 	private JPanel cardBuilder() {
-		JPanel cardPanel = new JPanel();
+		JPanel cardPanel = new JPanel(
+			new BorderLayout()
+		);
+
 		cardPanel.setBackground(Color.WHITE);
-		cardPanel.setLayout(new BoxLayout(cardPanel, BoxLayout.Y_AXIS));
 		cardPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		cardPanel.setMaximumSize(new Dimension(900, 800));
+		cardPanel.setMaximumSize(new Dimension(1100, 700));
+		cardPanel.setPreferredSize(
+			new Dimension(1080, 680)
+		);
+		cardPanel.setMinimumSize(
+			new Dimension(1060, 660)
+		);
 
-		cardPanel.add(Header.getComponent());
-		cardPanel.add(Register.getComponent());
+		cardPanel.add(Header.getComponent(), BorderLayout.NORTH);
+		cardPanel.add(Register.getComponent(), BorderLayout.CENTER);
 
 		return cardPanel;
 	}
