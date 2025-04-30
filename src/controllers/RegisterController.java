@@ -11,8 +11,9 @@ public class RegisterController {
     private StudentFactory factory = new StudentFactory();
     private StudentsService dao = new StudentsService();
 
-    public void toggleStudents() {
-        new StudentsView();
+    public void toggleStudentsView() {
+        StudentsView view = new StudentsView();
+        view.setVisible(true);
     }
 
     public void registerStudent(String fullName, String career, String semester) {
