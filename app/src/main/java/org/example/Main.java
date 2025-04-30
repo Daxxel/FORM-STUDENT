@@ -4,14 +4,18 @@
 package org.example;
 
 import java.text.Normalizer.Form;
+import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import models.Student;
 
 import org.example.view.RegisterView;
 
-public class App {
-        public static void main(String[] args) {
+public class Main {
+    
+    public static ArrayList<Student> Students;
+    public static void main(String[] args) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -30,5 +34,8 @@ public class App {
         }
 
         SwingUtilities.invokeLater(RegisterView::new);
+        
+        Students = new ArrayList<>();
+        
     }
 }

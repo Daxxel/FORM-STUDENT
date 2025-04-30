@@ -15,6 +15,7 @@ public class StudentsView extends javax.swing.JFrame {
     /**
      * Creates new form StudentsView
      */
+    
     public StudentsView() {
         initComponents();
         setVisible(true);

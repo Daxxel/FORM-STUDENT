@@ -1,6 +1,10 @@
 package org.example.view;
 
-import org.example.controllers.RegisterController;
+
+import javax.swing.JOptionPane;
+
+import controllers.RegisterController;
+import models.Student;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -236,6 +240,10 @@ public class RegisterView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerListaActionPerformed
+
+        Student student = new Student();
+        
+
         String name = inputNombre.getText();
         String fathersLastName = inputApellido1.getText();
         String mothersLastName = inputApellido2.getText();
@@ -253,6 +261,9 @@ public class RegisterView extends javax.swing.JFrame {
 
         boolean savedSuccess = controller.registerStudent(id, name, fathersLastName, mothersLastName, email, semester, career);
         this.dispose();
+        if (savedSuccess==false) {
+            JOptionPane.showMessageDialog(null, "De momento, no podemos guardar tu información. Por favor, intenta más tarde");
+        }
     }//GEN-LAST:event_VerListaActionPerformed
 
     private void VerLista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerLista1ActionPerformed
