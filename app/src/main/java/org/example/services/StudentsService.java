@@ -1,4 +1,4 @@
-package services;
+package org.example.services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,12 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Student;
-import util.DbConnection;
+import org.example.models.Student;
+
+import org.example.db.DbConnection;
 
 public class StudentsService {
-    private Connection connection = DbConnection.connection;
-    
+    private Connection connection = DbConnection.getConnection();
+
     public List<Student> getAllStudents() throws SQLException {
         // se hace una lista
 
@@ -31,7 +32,7 @@ public class StudentsService {
 
         ResultSet result = statement.executeQuery();
 
-        if(result.next()) {
+        if (result.next()) {
             // Student student = new Student();
             // students.add(student);
         }
@@ -47,16 +48,27 @@ public class StudentsService {
 
         ResultSet result = statement.executeQuery();
 
-        if(result.next()) {
-             /// return new Student();
+        if (result.next()) {
+            /// return new Student();
         }
 
         return null;
     }
 
     public boolean registerStudent(Student student) throws SQLException {
-        String sql = "INSERT INTO students () VALUES ()";
+        String sql = "INSERT INTO students (control, name, fathers_last_name, mother_last_name, email, career, semester) VALUES (?, ?, ?, ?, ? ,? ,?)";
 
-        return true;
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, student.getId());
+        statement.setString(2, student.getName());
+        statement.setString(3, student.getFatherLastName());
+        statement.setString(4, student.getMotherLastName());
+        statement.setString(5, student.getEmail());
+        statement.setString(6, student.getCareer());
+        statement.setString(7, student.getSemester());
+
+        int rowsInserted = statement.executeUpdate();
+        return rowsInserted > 0;
     }
 }

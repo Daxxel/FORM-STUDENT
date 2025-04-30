@@ -1,10 +1,11 @@
-package controllers;
+package org.example.controllers;
 
 import java.sql.SQLException;
 
-import models.Student;
-import services.StudentsService;
-import views.*;
+import org.example.view.StudentsView;
+
+import org.example.models.Student;
+import org.example.services.StudentsService;
 
 public class RegisterController {
     private StudentsService service = new StudentsService();

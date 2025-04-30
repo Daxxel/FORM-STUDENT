@@ -1,9 +1,6 @@
-package views;
+package org.example.view;
 
-
-import javax.swing.JOptionPane;
-
-import controllers.RegisterController;
+import org.example.controllers.RegisterController;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

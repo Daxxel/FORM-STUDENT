@@ -1,6 +1,6 @@
-package controllers;
+package org.example.controllers;
 
-import views.RegisterView;
+import org.example.view.RegisterView;
 
 public class StudentsController {
     public void toggleRegisterView() {
