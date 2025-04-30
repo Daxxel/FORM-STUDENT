@@ -18,8 +18,8 @@ public class RegisterController {
         try {
             Student student = new Student(id, name, fathersLastName, mothersLastName, email, semester, career);
             service.registerStudent(student);
-            return true;
 
+            return true;
         } catch (SQLException exception) {
             return false;
         }
@@ -29,8 +29,8 @@ public class RegisterController {
         try {
             Student student = new Student(id, name, fathersLastName, email, semester, career);
             service.registerStudent(student);
-            return true;
 
+            return true;
         } catch (SQLException exception) {
             return false;
         }

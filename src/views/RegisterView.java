@@ -90,24 +90,12 @@ public class RegisterView extends javax.swing.JFrame {
         inputNumeroControl.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         inputCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        inputCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                inputCorreoFocusLost(evt);
-            }
-        });
-
         inputApellido1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         CarreraComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una carrera", "Ing. Sistemas Computacionales", "Ing. Industrial", "Ing. Mecatronica", "Ing. Empresas" }));
         CarreraComboBox.setToolTipText("Selecciona una carrera");
 
         SemestreComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        SemestreComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SemestreComboBoxActionPerformed(evt);
-            }
-        });
-
         inputApellido2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -251,7 +239,22 @@ public class RegisterView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerListaActionPerformed
-        controller.registerStudent(NumControl.getText(), lblNombre.getText(), lblApellido1.getText(), lblCorreo.getText(), lblSemestre.getText());
+        String name = inputNombre.getText();
+        String fathersLastName = inputApellido1.getText();
+        String mothersLastName = inputApellido2.getText();
+        String email = inputCorreo.getText();
+        String id = inputNumeroControl.getText();
+        String semester = (String) SemestreComboBox.getSelectedItem();
+        String career = (String) CarreraComboBox.getSelectedItem();
+
+        if(mothersLastName.isEmpty()) {
+            boolean savedSuccess = controller.registerStudent(id, name, fathersLastName, email, semester, career);
+            this.dispose();
+
+            return;
+        }
+
+        boolean savedSuccess = controller.registerStudent(id, name, fathersLastName, mothersLastName, email, semester, career);
         this.dispose();
     }//GEN-LAST:event_VerListaActionPerformed
 
