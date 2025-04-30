@@ -18,6 +18,7 @@ public class RegisterView extends javax.swing.JFrame {
      */
     public RegisterView() {
         initComponents();
+        setVisible(true);
     }
 
     /**
@@ -76,42 +77,15 @@ public class RegisterView extends javax.swing.JFrame {
         lblCorreo.setText("Correo");
 
         inputNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        inputNombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                inputNombreFocusLost(evt);
-            }
-        });
-
         inputNumeroControl.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        inputNumeroControl.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                inputNumeroControlFocusLost(evt);
-            }
-        });
-
         inputCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        inputCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                inputCorreoFocusLost(evt);
-            }
-        });
 
         inputApellido1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        inputApellido1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                inputApellido1FocusLost(evt);
-            }
-        });
 
         CarreraComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una carrera", "Ing. Sistemas Computacionales", "Ing. Industrial", "Ing. Mecatronica", "Ing. Empresas" }));
         CarreraComboBox.setToolTipText("Selecciona una carrera");
 
         SemestreComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        SemestreComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SemestreComboBoxActionPerformed(evt);
-            }
-        });
 
         inputApellido2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -123,21 +97,11 @@ public class RegisterView extends javax.swing.JFrame {
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(0, 51, 51));
         jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Ver lista ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -256,63 +220,6 @@ public class RegisterView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void SemestreComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SemestreComboBoxActionPerformed
-
-    }//GEN-LAST:event_SemestreComboBoxActionPerformed
-    
-    // public  Boolean Validar(String valor, String mensage){
-    
-    //     if (valor.isBlank()) {
-            
-    //     } else {
-    //     }
-        
-    // }
-    
-    
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        btnAgregar.addActionListener(e -> {
-            String name = inputNombre.getText();
-            String lastname1 = inputApellido1.getText();
-            String lastname2 = inputApellido2.getText();
-            String NumeroControl = inputNumeroControl.getText();
-            int numberControl = Integer.parseInt(NumeroControl);
-            String Carrera = CarreraComboBox.getSelectedItem().toString();
-            if (Carrera.equals("Selecciona una carrera")) {
-                JOptionPane.showMessageDialog(null, "Por favor selecciona una carrera válida.");
-            } else {
-                String Semester = (String) SemestreComboBox.getSelectedItem();
-                int semester = Integer.parseInt(Semester);
-                String correo = inputCorreo.getText();
-           
-                
-                
-                
-            }
-        });
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void inputNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNombreFocusLost
-        JOptionPane.showMessageDialog(null, "Por favor llena el campo nombre");
-    }//GEN-LAST:event_inputNombreFocusLost
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void inputApellido1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputApellido1FocusLost
-        JOptionPane.showMessageDialog(null, "Por favor llena el campo de tu primer apellido");
-    }//GEN-LAST:event_inputApellido1FocusLost
-
-    private void inputNumeroControlFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNumeroControlFocusLost
-        JOptionPane.showMessageDialog(null, "Por favor llena el campo de tu Numero de Control");
-
-    }//GEN-LAST:event_inputNumeroControlFocusLost
-
-    private void inputCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputCorreoFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputCorreoFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CarreraComboBox;
