@@ -1,13 +1,17 @@
 
 
 import java.text.Normalizer.Form;
+import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import models.Student;
 
 import views.RegisterView;
 
 public class Main {
+    
+    public static ArrayList<Student> Students;
     public static void main(String[] args) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -27,5 +31,8 @@ public class Main {
         }
 
         SwingUtilities.invokeLater(RegisterView::new);
+        
+        Students = new ArrayList<>();
+        
     }
 }
