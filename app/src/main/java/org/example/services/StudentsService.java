@@ -56,7 +56,7 @@ public class StudentsService {
     }
 
     public boolean registerStudent(Student student) throws SQLException {
-        String sql = "INSERT INTO students (control, name, fathers_last_name, mother_last_name, email, career, semester) VALUES (?, ?, ?, ?, ? ,? ,?)";
+        String sql = "INSERT INTO students (control_number, name, fathers_last_name, mother_last_name, email, career, semester) VALUES (?, ?, ?, ?, ? ,? ,?)";
 
         PreparedStatement statement = connection.prepareStatement(sql);
 

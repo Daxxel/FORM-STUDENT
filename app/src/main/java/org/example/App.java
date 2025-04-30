@@ -4,17 +4,12 @@
 package org.example;
 
 import java.text.Normalizer.Form;
-import java.util.ArrayList;
-
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import models.Student;
 
 import org.example.view.RegisterView;
 
-public class Main {
-    
-    public static ArrayList<Student> Students;
+public class App {
     public static void main(String[] args) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -33,9 +28,6 @@ public class Main {
             java.util.logging.Logger.getLogger(Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        SwingUtilities.invokeLater(RegisterView::new);
-        
-        Students = new ArrayList<>();
-        
+        SwingUtilities.invokeLater(RegisterView::new);        
     }
 }

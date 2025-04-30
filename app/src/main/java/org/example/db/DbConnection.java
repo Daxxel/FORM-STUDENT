@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class DbConnection {
     private static Connection connection;
 
-    String url = "jdbc:postgresql://aws-0-us-east-2.pooler.supabase.com:6543/postgres";
-    String user = "postgres.tvfskzprmajgizgljumb";
-    String password = "55345LjAlFwBykMN";
+    private static final String URL = "jdbc:postgresql://aws-0-us-east-2.pooler.supabase.com:6543/postgres";
+    private static final String USER = "postgres.tvfskzprmajgizgljumb";
+    private static final String PASSWORD = "55345LjAlFwBykMN";
 
     private DbConnection() {}
 
@@ -24,12 +24,19 @@ public class DbConnection {
     private static Connection buildConnection() {
         try {
             // ESTO NUNCA SE HACE EN ENTORNOS NO ESCOLARES!!!!!
-            Connection connection = DriverManager.getConnection(
-                    "postgresql://postgres.tvfskzprmajgizgljumb:55345LjAlFwBykMN@aws-0-us-east-2.pooler.supabase.com:6543/postgres");
+            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
             return connection;
         } catch (SQLException exception) {
             throw new RuntimeException("Error connecting to the database", exception);
+        }
+    }
+
+    public static void testConnection() {
+        try {
+            
+        } catch (Exception e) {
+            // TODO: handle exception
         }
     }
 }

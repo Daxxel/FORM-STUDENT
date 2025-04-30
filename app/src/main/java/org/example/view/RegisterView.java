@@ -3,8 +3,8 @@ package org.example.view;
 
 import javax.swing.JOptionPane;
 
-import controllers.RegisterController;
-import models.Student;
+import org.example.controllers.RegisterController;
+import org.example.models.Student;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -239,11 +239,7 @@ public class RegisterView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void VerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerListaActionPerformed
-
-        Student student = new Student();
-        
-
+    private void VerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerListaActionPerformed     
         String name = inputNombre.getText();
         String fathersLastName = inputApellido1.getText();
         String mothersLastName = inputApellido2.getText();
