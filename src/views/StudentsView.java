@@ -4,17 +4,21 @@
  */
 package views;
 
+import controllers.StudentsController;
+
 /**
  *
  * @author daxxe
  */
 public class StudentsView extends javax.swing.JFrame {
-
+    private  StudentsController controller;
     /**
      * Creates new form StudentsView
      */
     public StudentsView() {
         initComponents();
+        setVisible(true);
+        controller = new StudentsController();
     }
 
     /**
@@ -67,7 +71,7 @@ public class StudentsView extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registro de Estudiantes");
 
-        jButton1.setText("Regresar");
+        jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -112,6 +116,8 @@ public class StudentsView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       
+        controller.toggleRegisterView();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
