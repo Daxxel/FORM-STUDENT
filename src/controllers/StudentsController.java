@@ -1,7 +1,6 @@
 package controllers;
 
 import views.RegisterView;
-import views.StudentsView;
 
 public class StudentsController {
     public void toggleRegisterView() {
