@@ -236,7 +236,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="inputNombreFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputNombreActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="inputNumeroControl">
@@ -247,9 +247,6 @@
               </Border>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="inputNumeroControlFocusLost"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="inputCorreo">
           <Properties>
@@ -271,9 +268,6 @@
               </Border>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="inputApellido1FocusLost"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="CarreraComboBox">
           <Properties>

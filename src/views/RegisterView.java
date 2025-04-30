@@ -81,22 +81,32 @@ public class RegisterView extends javax.swing.JFrame {
         lblCorreo.setText("Correo");
 
         inputNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        
+        inputNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputNombreActionPerformed(evt);
+            }
+        });
 
         inputNumeroControl.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        
 
         inputCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        
+        inputCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputCorreoFocusLost(evt);
+            }
+        });
 
         inputApellido1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-       
 
         CarreraComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una carrera", "Ing. Sistemas Computacionales", "Ing. Industrial", "Ing. Mecatronica", "Ing. Empresas" }));
         CarreraComboBox.setToolTipText("Selecciona una carrera");
 
         SemestreComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-          
+        SemestreComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SemestreComboBoxActionPerformed(evt);
+            }
+        });
 
         inputApellido2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -241,13 +251,17 @@ public class RegisterView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerListaActionPerformed
-        controller.toggleStudentsView();
+        controller.registerStudent(NumControl.getText(), lblNombre.getText(), lblApellido1.getText(), lblCorreo.getText(), lblSemestre.getText());
         this.dispose();
     }//GEN-LAST:event_VerListaActionPerformed
 
     private void VerLista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerLista1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_VerLista1ActionPerformed
+
+    private void inputNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNombreActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CarreraComboBox;
