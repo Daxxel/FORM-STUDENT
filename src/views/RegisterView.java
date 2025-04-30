@@ -298,7 +298,6 @@ public class RegisterView extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNombreFocusLost
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new StudentsView().setVisible(true);//Abrir la nueva ventana
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
