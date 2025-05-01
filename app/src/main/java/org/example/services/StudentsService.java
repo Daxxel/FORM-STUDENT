@@ -49,14 +49,14 @@ public class StudentsService {
         ResultSet result = statement.executeQuery();
 
         if (result.next()) {
-            /// return new Student();
+            return new Student(null, null, null, null, null, null, null);
         }
 
         return null;
     }
 
     public boolean registerStudent(Student student) throws SQLException {
-        String sql = "INSERT INTO students (control_number, name, fathers_last_name, mother_last_name, email, career, semester) VALUES (?, ?, ?, ?, ? ,? ,?)";
+        String sql = "INSERT INTO students (control_number, name, father_last_name, mother_last_name, email, career, semester) VALUES (?, ?, ?, ?, ? ,? ,?)";
 
         PreparedStatement statement = connection.prepareStatement(sql);
 

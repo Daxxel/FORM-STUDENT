@@ -356,7 +356,7 @@ public class RegisterView extends javax.swing.JFrame {
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void addStudentActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_VerListaActionPerformed
+  private void addStudentActionPerformed(java.awt.event.ActionEvent evt) {
     String name = nameInput.getText();
     String fathersLastName = fathersLastNameInput.getText();
     String mothersLastName = mothersLastNameInput.getText();
@@ -374,6 +374,7 @@ public class RegisterView extends javax.swing.JFrame {
       String result = controller.registerStudent(id, name, fathersLastName, email, semester, career);
       JOptionPane.showMessageDialog(mainPanel, result);
 
+      clearInputs();
       return;
     }
 
@@ -383,6 +384,18 @@ public class RegisterView extends javax.swing.JFrame {
         career);
 
     JOptionPane.showMessageDialog(mainPanel, result);
+    clearInputs();
+  }
+
+  private void clearInputs() {
+    nameInput.setText("");
+    fathersLastNameInput.setText("");
+    mothersLastNameInput.setText("");
+    emailInput.setText("");
+    controlNumberInput.setText("");
+
+    careerComboBox.setSelectedItem(careers[0]);
+    semesterComboBox.setSelectedItem(semesters[0]);
   }
 
   private void VerLista1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_VerLista1ActionPerformed

@@ -71,6 +71,14 @@ public class RegisterController {
         if (!idIsValid && !hasCorrectLength) {
             throw new Exception("El numero de control no es válido");
         }
+
+        Student result = service.getUserById(
+            Integer.parseInt(id)
+        );
+
+        if(result != null) {
+            throw new Exception("El numero de control ya está registrado");
+        }
     }
 
     private void validateFields(String[] fields) throws Exception {
