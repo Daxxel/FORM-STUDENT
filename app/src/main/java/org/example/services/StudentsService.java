@@ -40,16 +40,24 @@ public class StudentsService {
         return students;
     }
 
-    public Student getUserById(int id) throws SQLException {
-        String sql = "SELECT * FROM students WHERE id = ?";
+    public Student getStudentByControlNumber(String controlNumber) throws SQLException {
+        String sql = "SELECT * FROM students WHERE control_number = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
 
-        statement.setInt(1, id);
+        statement.setString(1, controlNumber);
 
         ResultSet result = statement.executeQuery();
 
         if (result.next()) {
-            return new Student(null, null, null, null, null, null, null);
+            String control = result.getString("control_number");
+            String name = result.getString("name");
+            String fathersLastName = result.getString("father_last_name");
+            String mothersLastName = result.getString("mother_last_name");
+            String email = result.getString("email");
+            String semester = result.getString("semester");
+            String career = result.getString("career");
+
+            return new Student(control, name, fathersLastName, mothersLastName, career, semester, email);
         }
 
         return null;

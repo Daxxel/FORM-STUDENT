@@ -64,17 +64,15 @@ public class RegisterController {
         }
     }
 
-    private void validateControlNumber(String id) throws Exception {
-        boolean idIsValid = id.matches("^[0-9]+$");
-        boolean hasCorrectLength = id.length() == "5000000".length();
+    private void validateControlNumber(String controlNumber) throws Exception {
+        boolean idIsValid = controlNumber.matches("^[0-9]+$");
+        boolean hasCorrectLength = controlNumber.length() >= "5000000".length();
 
         if (!idIsValid && !hasCorrectLength) {
             throw new Exception("El numero de control no es válido");
         }
 
-        Student result = service.getUserById(
-            Integer.parseInt(id)
-        );
+        Student result = service.getStudentByControlNumber(controlNumber);
 
         if(result != null) {
             throw new Exception("El numero de control ya está registrado");
