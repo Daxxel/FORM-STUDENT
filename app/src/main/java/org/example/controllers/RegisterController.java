@@ -26,9 +26,9 @@ public class RegisterController {
             Student student = new Student(id, name, fathersLastName, mothersLastName, email, semester, career);
             service.registerStudent(student);
 
-            return "Usuario registrado correctamente";
+            return "Usuario registrado correctamente.";
         } catch (SQLException exception) {
-            return "Hubo un error inesperado";
+            return "Hubo un error inesperado.";
         } catch (Exception exception) {
             return exception.getMessage();
         }
@@ -46,10 +46,10 @@ public class RegisterController {
             Student student = new Student(id, name, fathersLastName, email, semester, career);
             service.registerStudent(student);
 
-            return "Usuario registrado correctamente";
+            return "Usuario registrado correctamente.";
         } catch (SQLException exception) {
             exception.printStackTrace();
-            return "Hubo un error inesperado";
+            return "Hubo un error inesperado.";
         } catch (Exception exception) {
             return exception.getMessage();
         }
@@ -67,7 +67,7 @@ public class RegisterController {
     private void validateControlNumber(String controlNumber) throws Exception {
         boolean idIsValid = controlNumber.matches("^[0-9]+$");
         boolean hasCorrectLength = controlNumber.length() >= "5000000".length();
-
+//poner limite
         if (!idIsValid && !hasCorrectLength) {
             throw new Exception("El numero de control no es válido");
         }

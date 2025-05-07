@@ -32,9 +32,19 @@ public class StudentsService {
 
         ResultSet result = statement.executeQuery();
 
-        if (result.next()) {
-            // Student student = new Student();
-            // students.add(student);
+        while (result.next()) {
+            Student student = new Student(
+                result.getString("control_number"),
+                result.getString("name"),
+                result.getString("father_last_name"),
+                result.getString("mother_last_name"),
+                result.getString("email"),
+                result.getString("career"),
+                result.getString("semester")
+
+            );
+
+            students.add(student);
         }
 
         return students;
