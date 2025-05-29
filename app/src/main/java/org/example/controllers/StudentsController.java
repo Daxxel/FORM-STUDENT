@@ -9,6 +9,7 @@ import org.example.view.RegisterView;
 
 public class StudentsController {
     private StudentsService services;
+    List<Student> students = new ArrayList<Student>();
 
     public StudentsController() {
         services = new StudentsService();
@@ -19,10 +20,37 @@ public class StudentsController {
         view.setVisible(true);
     }
 
+    public void toggleRegisterView(Student student) {
+        RegisterView view = new RegisterView(student);
+        view.setVisible(true);
+    }
+
     public List<Student> getAll() {
         try {
-            return services.getAllStudents();
+            students = services.getAllStudents();
+            return students;
         } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Student getStudent(String controlNumber) {
+        try {
+            return services.getStudentByControlNumber(controlNumber);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Student deletedStudent(String controlNumber) {
+        try {
+            Student result = services.deletedStudent(controlNumber);
+            students.removeIf(student -> result.getId().equals(controlNumber));
+
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

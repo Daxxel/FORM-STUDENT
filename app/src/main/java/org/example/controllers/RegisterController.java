@@ -18,7 +18,9 @@ public class RegisterController {
         try {
             validateEmail(email);
             validateControlNumber(id);
-
+            validateStringName(name);
+            validateStringName(fathersLastName);
+            validateStringName(mothersLastName);
             String[] fields = new String[] { name, fathersLastName, mothersLastName };
 
             validateFields(fields);
@@ -66,9 +68,11 @@ public class RegisterController {
 
     private void validateControlNumber(String controlNumber) throws Exception {
         boolean idIsValid = controlNumber.matches("^[0-9]+$");
-        boolean hasCorrectLength = controlNumber.length() >= "5000000".length();
+        boolean hasCorrectLength = controlNumber.length() >= "5000".length();
 //poner limite
-        if (!idIsValid && !hasCorrectLength) {
+        boolean isPositive = Integer.parseInt(controlNumber) > 0;
+
+        if (!idIsValid && !hasCorrectLength && !isPositive) {
             throw new Exception("El numero de control no es válido");
         }
 
@@ -78,7 +82,18 @@ public class RegisterController {
             throw new Exception("El numero de control ya está registrado");
         }
     }
+    
+    private void validateStringName (String name) throws Exception {
+        if (name == null || name.trim().isEmpty() ) {
+            throw new Exception("El nombre no es válido");
+        }
 
+        boolean isValid = name.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]+$");
+
+        if (!isValid) {
+            throw new Exception("El nombre no es válido");
+        }
+    }
     private void validateFields(String[] fields) throws Exception {
         for (int index = 0; index < fields.length; index++) {
             String element = fields[index];

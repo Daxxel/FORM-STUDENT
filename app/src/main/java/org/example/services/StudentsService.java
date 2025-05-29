@@ -89,4 +89,46 @@ public class StudentsService {
         int rowsInserted = statement.executeUpdate();
         return rowsInserted > 0;
     }
+
+    public Student deletedStudent(String controlNumber) throws SQLException {
+        Student founded = getStudentByControlNumber(controlNumber);
+
+        if (founded == null) {
+            return null; // No se encontró el estudiante
+        }
+
+        String sql = "DELETE FROM students WHERE control_number = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, controlNumber);
+
+        int rows = statement.executeUpdate();
+
+        if (rows > 0) {
+            return founded; // Retorna el estudiante eliminado
+        }
+
+        return null;
+    }   
+
+    public Student updateStudent(Student student) throws SQLException { 
+        String sql = "UPDATE students SET name = ?, father_last_name = ?, mother_last_name = ?, email = ?, career = ?, semester = ? WHERE control_number = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, student.getName());
+        statement.setString(2, student.getFatherLastName());
+        statement.setString(3, student.getMotherLastName());
+        statement.setString(4, student.getEmail());
+        statement.setString(5, student.getCareer());
+        statement.setString(6, student.getSemester());
+        statement.setString(7, student.getId());
+
+        int rowsUpdated = statement.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            return getStudentByControlNumber(student.getId());
+        }
+
+        return null;
+    }
 }
